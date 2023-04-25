@@ -149,7 +149,7 @@ int print_reverse(va_list types, char buffer[],
 
 
 int print_rot13string(va_list types, char buffer[],
-                      int flags, int width, int precision, int size)
+		int flags, int width, int precision, int size)
 {
     char x;
     char *str;
@@ -166,23 +166,23 @@ int print_rot13string(va_list types, char buffer[],
     UNUSED(size);
 
     if (str == NULL)
-        str = "(AHYY)";
+	str = "(AHYY)";
 
     for (i = 0; str[i]; i++)
     {
-        x = str[i];
-        for (j = 0; in[j]; j++)
-        {
-            if (in[j] == str[i])
-            {
-                x = out[j];
-                break;
-            }
-        }
-        write(1, &x, 1);
-        count++;
+	    x = str[i];
+	for (j = 0; in[j]; j++)
+	{
+	if (in[j] == str[i])
+		{
+	x = out[j];
+		 break;
+	}
+	}
+	write(1, &x, 1);
+	count++;
     }
 
-    return count;
+	return (count);
 }
 
