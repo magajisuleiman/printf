@@ -40,9 +40,9 @@ int _printf(const char *format, ...)
 			++i;
 			print = handle_print(format, &i, list, buffer,
 				flag, width, precision, size);
-			if (printed == -1)
+			if (print == -1)
 				return (-1);
-			printed_chars += printed;
+			printed_chars += print;
 		}
 	}
 
