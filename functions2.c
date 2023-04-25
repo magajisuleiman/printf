@@ -151,37 +151,37 @@ int print_reverse(va_list types, char buffer[],
 int print_rot13string(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
-    char x;
-    char *str;
-    unsigned int i, j;
-    int count = 0;
-    char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char x;
+	char *str;
+	unsigned int i, j;
+	int count = 0;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-    str = va_arg(types, char *);
-    UNUSED(buffer);
-    UNUSED(flags);
-    UNUSED(width);
-    UNUSED(precision);
-    UNUSED(size);
+	str = va_arg(types, char *);
+	UNUSED(buffer);
+	UNUSED(flags);
+	UNUSED(width);
+	UNUSED(precision);
+	UNUSED(size);
 
-    if (str == NULL)
-	str = "(AHYY)";
+	if (str == NULL)
+		str = "(AHYY)";
 
-    for (i = 0; str[i]; i++)
-    {
-	    x = str[i];
-	for (j = 0; in[j]; j++)
+	for (i = 0; str[i]; i++)
 	{
-	if (in[j] == str[i])
+	    x = str[i];
+		for (j = 0; in[j]; j++)
 		{
-	x = out[j];
-		 break;
+			if (in[j] == str[i])
+			{
+				x = out[j];
+				break;
+			}
+		}
+		write(1, &x, 1);
+		count++;
 	}
-	}
-	write(1, &x, 1);
-	count++;
-    }
 
 	return (count);
 }
