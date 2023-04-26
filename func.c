@@ -1,15 +1,13 @@
 #include "main.h"
 
-/************************* PRINT CHAR *************************/
-
 /**
  * print_char - Prints a char
  * @types: List a of arguments
- * @buffer: Buffer array to handle print
- * @flags:  Calculates active flags
+ * @buffer: Buffer array
+ * @flags:  active flags
  * @width: Width
- * @precision: Precision specification
- * @size: Size specifier
+ * @precision: specification
+ * @size: specifier
  * Return: Number of chars printed
  */
 int print_char(va_list types, char buffer[],
@@ -19,7 +17,7 @@ int print_char(va_list types, char buffer[],
 
 	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
-/************************* PRINT A STRING *************************/
+
 /**
  * print_string - function prints a string
  * @types: List a of arguments
@@ -168,12 +166,21 @@ int print_binary(va_list types, char buffer[],
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
 	a[0] = n / m;
-	for (i = 1; i < 32; i++)
+
+	i = 1;
+
+	while (i < 32)
 	{
 		m /= 2;
 		a[i] = (n / m) % 2;
+		i++;
 	}
-	for (i = 0, sum = 0, count = 0; i < 32; i++)
+
+	i = 0;
+	sum = 0;
+	count = 0;
+
+	while (i < 32)
 	{
 		sum += a[i];
 		if (sum || i == 31)
@@ -183,6 +190,7 @@ int print_binary(va_list types, char buffer[],
 			write(1, &z, 1);
 			count++;
 		}
+		i++;
 	}
 	return (count);
 }

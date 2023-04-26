@@ -29,8 +29,14 @@ int handle_write_char(char c, char buffer[],
 	if (width > 1)
 	{
 		buffer[BUFF_SIZE - 1] = '\0';
-		for (i = 0; i < width - 1; i++)
+
+		i = 0;
+
+		while (i < width - 1)
+		{
 			buffer[BUFF_SIZE - i - 2] = padd;
+			i++;
+		}
 
 		if (flags & F_MINUS)
 			return (write(1, &buffer[0], 1) +
@@ -176,8 +182,13 @@ int write_unsgnd(int is_negative, int ind,
 
 	if (width > length)
 	{
-		for (i = 0; i < width - length; i++)
+		i = 0;
+
+		while (i < width - length)
+		{
 			buffer[i] = padd;
+			i++;
+		}
 
 		buffer[i] = '\0';
 
@@ -214,8 +225,13 @@ int write_pointer(char buffer[], int ind, int length,
 
 	if (width > length)
 	{
-		for (i = 3; i < width - length + 3; i++)
+		i = 3;
+
+		while (i < width - length + 3)
+		{
 			buffer[i] = padd;
+			i++;
+		}
 		buffer[i] = '\0';
 		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
 		{

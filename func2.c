@@ -1,6 +1,5 @@
 #include "main.h"
 
-/****************** PRINT POINTER ******************/
 /**
  * print_pointer - Prints the value of a pointer variable
  * @types: List a of arguments
@@ -126,12 +125,15 @@ int print_reverse(va_list types, char buffer[],
 	for (i = 0; str[i]; i++)
 		;
 
-	for (i = i - 1; i >= 0; i--)
+	i = i - 1;
+
+	while (i >= 0)
 	{
 		char z = str[i];
 
 		write(1, &z, 1);
 		count++;
+		i--;
 	}
 	return (count);
 }
@@ -168,7 +170,9 @@ int print_rot13string(va_list types, char buffer[],
 	if (str == NULL)
 		str = "(AHYY)";
 
-	for (i = 0; str[i]; i++)
+	i = 0;
+
+	while (str[i])
 	{
 	    x = str[i];
 		for (j = 0; in[j]; j++)
@@ -181,6 +185,7 @@ int print_rot13string(va_list types, char buffer[],
 		}
 		write(1, &x, 1);
 		count++;
+		i++;
 	}
 
 	return (count);
